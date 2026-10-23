@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 — 2026-10-23
+
+- README 仅保留工具包用途、各 Skill 的使用方式、安装与必要依赖说明。
+- 8 个 Skill 内容不变。
+
 ## 0.1.1 — 2026-10-23
 
 - 插件、marketplace、仓库和显示名由 coding-skills / Coding Skills 改为 developer-skills / Developer Skills。
