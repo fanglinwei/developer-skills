@@ -5,11 +5,11 @@
 ## 安装
 
 ```sh
-codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.2
+codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.3
 codex plugin add developer-skills@developer-skills
 ```
 
-私有仓库需要当前 GitHub 账号具有读取权限。安装后重启 Codex 或开启新聊天，从技能列表选择 `developer-skills` 下的对应 Skill。
+安装后重启 Codex 或开启新聊天，从技能列表选择 `developer-skills` 下的对应 Skill。
 
 ## Skill 与用法
 
