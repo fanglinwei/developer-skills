@@ -1,0 +1,6 @@
+interface:
+  display_name: "Code Review · 双模式代码审查"
+  short_description: "自动触发 daily/deep 代码审查，结合基础规范与适用的 Web 前端规范"
+
+policy:
+  allow_implicit_invocation: true

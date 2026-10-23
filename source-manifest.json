@@ -1,0 +1,128 @@
+{
+  "snapshot_date": "2026-10-23",
+  "skills": [
+    {
+      "name": "code-review",
+      "origin": ".agents/skills/code-review",
+      "changes": [
+        "Replace three machine-specific dependency paths with bundled or installed skill lookup."
+      ],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "source_sha256": "89cc2f7a929e685995fde69edf0d8e990930249a210925ccf5956652f3d48dd1",
+          "packaged_sha256": "524dade488318ebbc0b5aa56bf0e5adb764ae5f09735c0efe356771cfdeefaad"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "source_sha256": "697fcea19b8790b02249fc5f182c436898b978d5ea49d1111c58cc49dc64e2c1",
+          "packaged_sha256": "697fcea19b8790b02249fc5f182c436898b978d5ea49d1111c58cc49dc64e2c1"
+        }
+      ]
+    },
+    {
+      "name": "code-simplifier",
+      "origin": ".codex/skills/code-simplifier",
+      "changes": [],
+      "files": [
+        {
+          "path": "LICENSE",
+          "source_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "packaged_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "SKILL.md",
+          "source_sha256": "0b178354253d6f19446253b4ff7756794ecb00eb73eaac99f6dd91b67bc4d190",
+          "packaged_sha256": "0b178354253d6f19446253b4ff7756794ecb00eb73eaac99f6dd91b67bc4d190"
+        }
+      ]
+    },
+    {
+      "name": "codegraph-project-scan",
+      "origin": ".agents/skills/codegraph-project-scan",
+      "changes": [],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "source_sha256": "1d0fb8ed3fa535cf63224929a5f45bd924dadf806a17c3668b2f9b17a2f05ac2",
+          "packaged_sha256": "1d0fb8ed3fa535cf63224929a5f45bd924dadf806a17c3668b2f9b17a2f05ac2"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "source_sha256": "8bc42b55b6ecb4e9a75ba7db28260da5f4575b93984cfd65c249d2c6db12c91d",
+          "packaged_sha256": "8bc42b55b6ecb4e9a75ba7db28260da5f4575b93984cfd65c249d2c6db12c91d"
+        }
+      ]
+    },
+    {
+      "name": "frontend-ai-dev-docs",
+      "origin": ".agents/skills/frontend-ai-dev-docs",
+      "changes": [],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "source_sha256": "a16a15affb626ae2ccd07f4405796340cf17ddc1f9c2efa069bbdccfa94806fa",
+          "packaged_sha256": "a16a15affb626ae2ccd07f4405796340cf17ddc1f9c2efa069bbdccfa94806fa"
+        }
+      ]
+    },
+    {
+      "name": "frontend-page-clone",
+      "origin": ".agents/skills/frontend-page-clone",
+      "changes": [],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "source_sha256": "ec39025f540ce4565794d9e7e6f725b643869011e620d5ae4b87879be2514e4e",
+          "packaged_sha256": "ec39025f540ce4565794d9e7e6f725b643869011e620d5ae4b87879be2514e4e"
+        },
+        {
+          "path": "references/element-ui-checklist.md",
+          "source_sha256": "98cdf09ba8a38b038a353b7c266a03bf5b9834b7fd64f79539d9b5f42057f06b",
+          "packaged_sha256": "98cdf09ba8a38b038a353b7c266a03bf5b9834b7fd64f79539d9b5f42057f06b"
+        }
+      ]
+    },
+    {
+      "name": "frontend-safe-development",
+      "origin": ".agents/skills/frontend-safe-development",
+      "changes": [],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "source_sha256": "c7736307629c7a09e9d9b99029866848f1436219656ee104327be0012a16c5b7",
+          "packaged_sha256": "c7736307629c7a09e9d9b99029866848f1436219656ee104327be0012a16c5b7"
+        }
+      ]
+    },
+    {
+      "name": "frontend-style-clone",
+      "origin": ".agents/skills/frontend-style-clone",
+      "changes": [],
+      "files": [
+        {
+          "path": "SKILL.md",
+          "source_sha256": "a1d90eb7cc687f6bbb305cee536da0a24db70e400ad2c33193822ab236fd6fee",
+          "packaged_sha256": "a1d90eb7cc687f6bbb305cee536da0a24db70e400ad2c33193822ab236fd6fee"
+        }
+      ]
+    },
+    {
+      "name": "swift-code-style",
+      "origin": ".agents/skills/swift-code-style",
+      "changes": [],
+      "files": [
+        {
+          "path": "LICENSE",
+          "source_sha256": "27fd783938449d4534992cedd27f43712fcd8934a99e7d35081b7f89ef542469",
+          "packaged_sha256": "27fd783938449d4534992cedd27f43712fcd8934a99e7d35081b7f89ef542469"
+        },
+        {
+          "path": "SKILL.md",
+          "source_sha256": "857fe7a7bbba5ed8b0e274fcecd64720cb8b7e23fe59aaebdccfa636fb80d6fd",
+          "packaged_sha256": "857fe7a7bbba5ed8b0e274fcecd64720cb8b7e23fe59aaebdccfa636fb80d6fd"
+        }
+      ]
+    }
+  ]
+}

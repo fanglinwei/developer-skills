@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "coding-skills",
+  "version": "0.1.0",
+  "description": "个人编码工作流：代码审查与简化、CodeGraph 检索、前端开发与复刻、模块文档及 Swift 规范。",
+  "keywords": [
+    "coding",
+    "code-review",
+    "frontend",
+    "swift",
+    "skills"
+  ],
+  "author": {
+    "name": "fanglinwei",
+    "url": "https://github.com/fanglinwei"
+  },
+  "repository": "https://github.com/fanglinwei/coding-skills",
+  "homepage": "https://github.com/fanglinwei/coding-skills"
+}
