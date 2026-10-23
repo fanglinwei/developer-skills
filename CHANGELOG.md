@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 — 2026-10-23
+
+- 插件、marketplace、仓库和显示名由 coding-skills / Coding Skills 改为 developer-skills / Developer Skills。
+- 保留 v0.1.0 历史，8 个 Skill 内容不变。
+
 ## 0.1.0 — 2026-10-23
 
 - 打包 8 个已确认的 Skill，携带全部 13 个来源文件及已有许可材料。

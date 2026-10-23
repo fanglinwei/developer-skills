@@ -1,19 +1,19 @@
-# Coding Skills
+# Developer Skills
 
-用于个人编码工作的 Codex 插件，首版 `0.1.0` 整合 8 个已有 Skill。保留原有触发条件、权限边界、流程和验收要求。
+用于个人编码工作的 Codex 插件，当前版本 `0.1.1` 整合 8 个已有 Skill。保留原有触发条件、权限边界、流程和验收要求。
 
 ## 包含的 Skill
 
 | Skill | 用途 | 显式调用示例 |
 | --- | --- | --- |
-| code-review | daily/deep 双模式只读代码审查 | `$coding-skills:code-review daily` |
-| code-simplifier | 保持行为的代码简化 | `$coding-skills:code-simplifier` |
-| codegraph-project-scan | 项目代码定位与调用关系检索 | `$coding-skills:codegraph-project-scan` |
-| frontend-ai-dev-docs | 前端模块功能迭代文档 | `$coding-skills:frontend-ai-dev-docs` |
-| frontend-page-clone | 页面或模块复刻，按约定使用 mock | `$coding-skills:frontend-page-clone` |
-| frontend-safe-development | 浏览器 Web 前端开发约束 | `$coding-skills:frontend-safe-development` |
-| frontend-style-clone | 保留现有业务的局部视觉复刻 | `$coding-skills:frontend-style-clone` |
-| swift-code-style | Swift 命名、API 与安全规范 | `$coding-skills:swift-code-style` |
+| code-review | daily/deep 双模式只读代码审查 | `$developer-skills:code-review daily` |
+| code-simplifier | 保持行为的代码简化 | `$developer-skills:code-simplifier` |
+| codegraph-project-scan | 项目代码定位与调用关系检索 | `$developer-skills:codegraph-project-scan` |
+| frontend-ai-dev-docs | 前端模块功能迭代文档 | `$developer-skills:frontend-ai-dev-docs` |
+| frontend-page-clone | 页面或模块复刻，按约定使用 mock | `$developer-skills:frontend-page-clone` |
+| frontend-safe-development | 浏览器 Web 前端开发约束 | `$developer-skills:frontend-safe-development` |
+| frontend-style-clone | 保留现有业务的局部视觉复刻 | `$developer-skills:frontend-style-clone` |
+| swift-code-style | Swift 命名、API 与安全规范 | `$developer-skills:swift-code-style` |
 
 使用时从宿主显示的技能列表选择对应条目；插件内 `name` 保持原名，宿主提供插件命名空间。原有隐式触发策略也保留，不能据此保证每次对话都自动调用。
 
@@ -25,7 +25,7 @@
 
 ```sh
 codex plugin marketplace add .
-codex plugin add coding-skills@coding-skills
+codex plugin add developer-skills@developer-skills
 ```
 
 然后重启 Codex 或开始新聊天，检查插件和 8 个 Skill 是否出现。上述命令会注册 marketplace 并安装插件。
@@ -50,7 +50,7 @@ codex plugin add coding-skills@coding-skills
 ## 文件结构
 
 ```text
-coding-skills/
+developer-skills/
 ├── plugin.json                       # Agent Plugins 格式入口
 ├── .codex-plugin/plugin.json         # Codex 兼容清单及界面元数据
 ├── .agents/plugins/marketplace.json  # 一个 marketplace，一个插件
@@ -81,20 +81,20 @@ node --test tests/validate.test.mjs
 
 ## GitHub 维护和更新
 
-本目录是 fanglinwei/coding-skills 仓库根目录。首版为 v0.1.0，仓库按私有方式维护。
+本目录是 fanglinwei/developer-skills 仓库根目录。当前版本为 v0.1.1，仓库按私有方式维护。
 
 其他电脑可从 GitHub 安装固定的已发布版本。私有仓库要求当前 Git 凭据具有读取权限。
 
 ```sh
-codex plugin marketplace add fanglinwei/coding-skills --ref v0.1.0
-codex plugin add coding-skills@coding-skills
+codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.1
+codex plugin add developer-skills@developer-skills
 ```
 
 后续在本仓库的 `skills/` 中维护；已安装缓存是部署副本。修改后运行校验和相关行为检查，同步更新 `source-manifest.json` 中受影响文件的 `packaged_sha256`，保留原始导入哈希；新增/删除文件也应同步记录来源和文件清单。版本同时更新 `plugin.json` 与 `.codex-plugin/plugin.json`，并记录 CHANGELOG。
 
 GitHub 版本建议先做私有维护；发布前核实 [许可说明](LICENSES.md)。稳定版本可以使用 tag/Release 标记。Git 暂存、提交、推送和发布按维护者的明确授权分别执行。
 
-Git 来源的 marketplace 可通过 `codex plugin marketplace upgrade coding-skills` 刷新；该命令针对 Git marketplace，不适用于本地路径来源。刷新源目录后，按当前客户端支持的流程重新安装或刷新插件，再开启新聊天确认版本与技能路径。不要仅凭 GitHub 文件已更新就认定本机缓存已经更新。不同机器若要求固定版本，添加 marketplace 时使用已发布的 `--ref TAG`，不要让生产工作流跟随未验证的主分支变化。
+Git 来源的 marketplace 可通过 `codex plugin marketplace upgrade developer-skills` 刷新；该命令针对 Git marketplace，不适用于本地路径来源。刷新源目录后，按当前客户端支持的流程重新安装或刷新插件，再开启新聊天确认版本与技能路径。不要仅凭 GitHub 文件已更新就认定本机缓存已经更新。不同机器若要求固定版本，添加 marketplace 时使用已发布的 `--ref TAG`，不要让生产工作流跟随未验证的主分支变化。
 
 ## 保留的行为差异
 
@@ -104,4 +104,4 @@ Git 来源的 marketplace 可通过 `codex plugin marketplace upgrade coding-ski
 
 ## 安装后检查
 
-在新聊天中确认 8 个条目均来自 `coding-skills`，再选择真实但可控的小任务验证：局部复刻保留业务数据；页面复刻按约定 mock；代码审查只输出报告；代码简化保持行为。验证取决于实际项目、依赖和宿主，不属于文件校验的通过范围。
+在新聊天中确认 8 个条目均来自 `developer-skills`，再选择真实但可控的小任务验证：局部复刻保留业务数据；页面复刻按约定 mock；代码审查只输出报告；代码简化保持行为。验证取决于实际项目、依赖和宿主，不属于文件校验的通过范围。

@@ -1,11 +1,11 @@
 {
-  "name": "coding-skills",
+  "name": "developer-skills",
   "interface": {
-    "displayName": "Coding Skills"
+    "displayName": "Developer Skills"
   },
   "plugins": [
     {
-      "name": "coding-skills",
+      "name": "developer-skills",
       "source": {
         "source": "local",
         "path": "./"

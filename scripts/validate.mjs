@@ -42,17 +42,17 @@ export function validate(directory) {
   const manifest = readJson(resolve(root, 'plugin.json'));
   const overlay = readJson(resolve(root, '.codex-plugin/plugin.json'));
   assert.equal(manifest.$schema, 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json', 'Wrong schema declaration');
-  assert.equal(manifest.name, 'coding-skills', 'Wrong plugin name');
+  assert.equal(manifest.name, 'developer-skills', 'Wrong plugin name');
   assert(/^\d+\.\d+\.\d+$/.test(manifest.version), 'Invalid version');
   for (const key of ['name', 'version', 'description']) {
     assert(manifest[key] && overlay[key] === manifest[key], `Manifest mismatch: ${key}`);
   }
   assert.equal(overlay.skills, './skills/', 'Wrong skill directory');
-  assert.equal(overlay.interface?.displayName, 'Coding Skills', 'Wrong display name');
+  assert.equal(overlay.interface?.displayName, 'Developer Skills', 'Wrong display name');
   assert(!['hooks', 'mcpServers', 'apps'].some(key => key in overlay), 'Unexpected runtime integration');
 
   const marketplace = readJson(resolve(root, '.agents/plugins/marketplace.json'));
-  assert.equal(marketplace.name, 'coding-skills', 'Wrong marketplace name');
+  assert.equal(marketplace.name, 'developer-skills', 'Wrong marketplace name');
   assert.equal(marketplace.plugins?.length, 1, 'Expected one marketplace entry');
   const entry = marketplace.plugins[0];
   assert.equal(entry.name, manifest.name, 'Wrong marketplace plugin');

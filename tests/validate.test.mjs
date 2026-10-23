@@ -9,7 +9,7 @@ import { validate } from '../scripts/validate.mjs';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 function copyPackage(t) {
-  const temporary = mkdtempSync(resolve(tmpdir(), 'coding-skills-test-'));
+  const temporary = mkdtempSync(resolve(tmpdir(), 'developer-skills-test-'));
   t.after(() => rmSync(temporary, { recursive: true, force: true }));
   const root = resolve(temporary, 'package');
   cpSync(ROOT, root, { recursive: true, filter: source => !source.split(/[\\/]/).includes('.git') });

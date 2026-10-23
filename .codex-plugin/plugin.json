@@ -1,6 +1,6 @@
 {
-  "name": "coding-skills",
-  "version": "0.1.0",
+  "name": "developer-skills",
+  "version": "0.1.1",
   "description": "个人编码工作流：代码审查与简化、CodeGraph 检索、前端开发与复刻、模块文档及 Swift 规范。",
   "keywords": [
     "coding",
@@ -11,7 +11,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Coding Skills",
+    "displayName": "Developer Skills",
     "shortDescription": "个人编码工作流与前端复刻工具集",
     "longDescription": "整合 8 个现有 Skill，保留各自触发条件、权限和验收规则。部分工作流按需依赖 Ponytail、grilling、Karpathy Guidelines 及 CodeGraph CLI。",
     "developerName": "fanglinwei",
@@ -20,15 +20,15 @@
       "Instructions"
     ],
     "defaultPrompt": [
-      "使用 coding-skills:code-review daily 审查当前改动。",
-      "使用 coding-skills:frontend-style-clone 对齐指定区域的样式。",
-      "使用 coding-skills:codegraph-project-scan 定位当前项目实现。"
+      "使用 developer-skills:code-review daily 审查当前改动。",
+      "使用 developer-skills:frontend-style-clone 对齐指定区域的样式。",
+      "使用 developer-skills:codegraph-project-scan 定位当前项目实现。"
     ]
   },
   "author": {
     "name": "fanglinwei",
     "url": "https://github.com/fanglinwei"
   },
-  "repository": "https://github.com/fanglinwei/coding-skills",
-  "homepage": "https://github.com/fanglinwei/coding-skills"
+  "repository": "https://github.com/fanglinwei/developer-skills",
+  "homepage": "https://github.com/fanglinwei/developer-skills"
 }
