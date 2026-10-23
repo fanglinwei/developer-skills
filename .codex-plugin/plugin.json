@@ -1,6 +1,6 @@
 {
   "name": "developer-skills",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "个人编码工作流：代码审查与简化、CodeGraph 检索、前端开发与复刻、模块文档及 Swift 规范。",
   "keywords": [
     "coding",

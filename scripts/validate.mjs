@@ -89,7 +89,11 @@ export function validate(directory) {
   const actual = new Set(files.filter(path => isWithin(resolve(root, 'skills'), path))
     .map(path => relative(root, path).split(sep).join('/')));
   assert.deepEqual(tracked, actual, 'Source inventory does not match packaged files');
-  assert.deepEqual(changed, ['skills/code-review/SKILL.md'], 'Unexpected source adaptations');
+  assert.deepEqual(changed, [
+    'skills/code-review/SKILL.md',
+    'skills/frontend-page-clone/SKILL.md',
+    'skills/frontend-page-clone/references/element-ui-checklist.md',
+  ], 'Unexpected source adaptations');
 
   for (const path of files) {
     if (!['.md', '.json', '.yaml'].includes(extname(path))) continue;

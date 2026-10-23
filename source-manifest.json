@@ -69,17 +69,20 @@
     {
       "name": "frontend-page-clone",
       "origin": ".agents/skills/frontend-page-clone",
-      "changes": [],
+      "changes": [
+        "Prefer existing target-project APIs and business behavior; isolate mocks to missing capabilities or standalone demos, and align the component checklist.",
+        "Consolidate repeated workflow rules while retaining clone tiers, conditional interviewing, component and data reuse, prompt fidelity, and verification requirements."
+      ],
       "files": [
         {
           "path": "SKILL.md",
           "source_sha256": "ec39025f540ce4565794d9e7e6f725b643869011e620d5ae4b87879be2514e4e",
-          "packaged_sha256": "ec39025f540ce4565794d9e7e6f725b643869011e620d5ae4b87879be2514e4e"
+          "packaged_sha256": "467c2a700890a2d814f172a05363a0ce3680784b766be6e4b46a5d299416aa2f"
         },
         {
           "path": "references/element-ui-checklist.md",
           "source_sha256": "98cdf09ba8a38b038a353b7c266a03bf5b9834b7fd64f79539d9b5f42057f06b",
-          "packaged_sha256": "98cdf09ba8a38b038a353b7c266a03bf5b9834b7fd64f79539d9b5f42057f06b"
+          "packaged_sha256": "285214e07192ad8d681f6b25d8da1385db1ca1be04cc5fc81b58b2685f5aebf7"
         }
       ]
     },
