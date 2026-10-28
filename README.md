@@ -9,7 +9,15 @@ codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.5
 codex plugin add developer-skills@developer-skills
 ```
 
-首次安装和从旧版本更新均执行以上两条命令：先将 marketplace 指向 v0.1.5，再安装该版本插件。安装后重启 Codex 或开启新聊天，从技能列表选择 `developer-skills` 下的对应 Skill。
+从旧版本更新时，先移除旧 marketplace 来源，再执行上面的安装命令；已安装过同名来源时，直接添加不同 ref 会被 CLI 拒绝：
+
+```sh
+codex plugin marketplace remove developer-skills
+codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.5
+codex plugin add developer-skills@developer-skills
+```
+
+安装后重启 Codex 或开启新聊天，从技能列表选择 `developer-skills` 下的对应 Skill。
 
 当前发布版本：[v0.1.5](https://github.com/fanglinwei/developer-skills/releases/tag/v0.1.5)。本版更新 code-review 的证据分类、需求与规范核对、按需协作职责及独立复核规则，其余 7 个 Skill 保持不变。
 
