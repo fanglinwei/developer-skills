@@ -26,6 +26,12 @@ test('missing reference', t => {
   assert.throws(() => validate(root), { code: 'ENOENT' });
 });
 
+test('missing code review collaboration reference', t => {
+  const root = copyPackage(t);
+  unlinkSync(resolve(root, 'skills/code-review/references/agent-collaboration.md'));
+  assert.throws(() => validate(root), { code: 'ENOENT' });
+});
+
 test('changed skill content', t => {
   const root = copyPackage(t);
   appendFileSync(resolve(root, 'skills/code-simplifier/SKILL.md'), '\nUnexpected behavior change.\n');

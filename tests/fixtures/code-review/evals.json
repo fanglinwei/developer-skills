@@ -1,0 +1,29 @@
+{
+  "skill_name": "code-review",
+  "evals": [
+    {
+      "id": 1,
+      "name": "protected-read",
+      "prompt": "帮我 review 这次订单读取改动。before 和 after 是前后版本，需求见 requirements.md，请检查实际调用影响并给出只读审查报告。",
+      "files": ["discovery/protected-read"],
+      "expected_output": "核实 service.py 在返回订单前仍验证租户，避免将仓库签名调整误报为租户越权。",
+      "expectations": ["没有将订单读取确认为租户越权缺陷，并以当前 service.py 的保护为依据。", "未将已有跨租户测试覆盖的行为重复报告为关键验证缺口。"]
+    },
+    {
+      "id": 2,
+      "name": "checkout",
+      "prompt": "审查这个结算模块的改动，需求在 requirements.md，before 和 after 是两个版本。请追踪相关调用方，只报告有依据的问题和实际验证情况。",
+      "files": ["discovery/checkout"],
+      "expected_output": "发现 pricing.total 改为分后 worker 仍乘 100，说明普通路径会收取 100 倍金额，定位契约变化和未改调用方。",
+      "expectations": ["确认金额单位契约导致 worker.run_checkout 收取 100 倍金额，指出 pricing.py 和 worker.py 的因果路径。", "将已证实的结算错误作为缺陷而非仅缺测试，并建议去掉调用方的重复转换。"]
+    },
+    {
+      "id": 3,
+      "name": "exports",
+      "prompt": "帮我检查导出功能是否完整实现当前需求，比较 before 和 after；请读 requirements.md 和现有测试，给出只读 review 结论。",
+      "files": ["discovery/exports"],
+      "expected_output": "发现 include_archived=True 被忽略导致归档记录遗漏，确认 status 已实现并保留默认过滤。",
+      "expectations": ["确认 include_archived=True 仍丢弃归档记录，以需求和 exporter.py 的过滤条件支持结论。", "最小修复保留默认过滤，并区分已实现的 status 字段与未实现的归档选项。"]
+    }
+  ]
+}

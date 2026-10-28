@@ -1,0 +1,39 @@
+--- before/repository.py
++++ after/repository.py
+@@ -1,5 +1,2 @@
+-def load_order(records, tenant, order_id):
+-    order = records.get(order_id)
+-    if order is not None and order['tenant'] != tenant:
+-        raise PermissionError('order belongs to another tenant')
+-    return order
++def load_order(records, order_id):
++    return records.get(order_id)
+--- before/service.py
++++ after/service.py
+@@ -2,5 +2,7 @@
+ 
+ 
+ def get_order(records, tenant, order_id):
+-    order = load_order(records, tenant, order_id)
++    order = load_order(records, order_id)
++    if order is not None and order['tenant'] != tenant:
++        raise PermissionError('order belongs to another tenant')
+     return None if order is None else {'id': order_id, 'total': order['total']}
+--- before/tests/test_service.py
++++ after/tests/test_service.py
+@@ -0,0 +1,15 @@
++import unittest
++from service import get_order
++
++
++class OrderTests(unittest.TestCase):
++    def test_owner(self):
++        self.assertEqual(get_order({'o1': {'tenant': 'a', 'total': 120}}, 'a', 'o1'),
++                         {'id': 'o1', 'total': 120})
++
++    def test_other_tenant(self):
++        with self.assertRaises(PermissionError):
++            get_order({'o1': {'tenant': 'b', 'total': 120}}, 'a', 'o1')
++
++    def test_missing(self):
++        self.assertIsNone(get_order({}, 'a', 'missing'))

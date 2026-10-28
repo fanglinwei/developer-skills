@@ -2,20 +2,22 @@
 
 用于 Codex 的开发工作流工具包，提供代码审查、代码简化、项目检索、前端开发与界面复刻、功能文档和 Swift 编码规范。
 
-## 安装
+## 安装与更新
 
 ```sh
-codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.4
+codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.5
 codex plugin add developer-skills@developer-skills
 ```
 
-安装后重启 Codex 或开启新聊天，从技能列表选择 `developer-skills` 下的对应 Skill。
+首次安装和从旧版本更新均执行以上两条命令：先将 marketplace 指向 v0.1.5，再安装该版本插件。安装后重启 Codex 或开启新聊天，从技能列表选择 `developer-skills` 下的对应 Skill。
+
+当前发布版本：[v0.1.5](https://github.com/fanglinwei/developer-skills/releases/tag/v0.1.5)。本版更新 code-review 的证据分类、需求与规范核对、按需协作职责及独立复核规则，其余 7 个 Skill 保持不变。
 
 ## Skill 与用法
 
 | Skill | 作用 | 调用示例 |
 | --- | --- | --- |
-| `code-review` | 审查代码正确性、安全、性能和复杂度。支持日常 `daily` 与跨模块 `deep` 模式，默认只输出报告。 | `$developer-skills:code-review daily` 帮我审查当前改动。 |
+| `code-review` | 按证据核实正确性、安全、需求与调用影响。支持 `daily`/`deep`，默认隐藏可选改进；获授权时按需分线与复核，只输出报告。 | `$developer-skills:code-review daily` 帮我审查当前改动。 |
 | `code-simplifier` | 简化近期修改的代码，保持原有功能与行为，遵循项目规范。 | `$developer-skills:code-simplifier` 简化本次修改。 |
 | `codegraph-project-scan` | 定位项目实现、引用和调用关系，按项目规则检查及使用 CodeGraph 索引。 | `$developer-skills:codegraph-project-scan` 查找订单提交入口及调用链。 |
 | `frontend-ai-dev-docs` | 按功能梳理前后变化、交互、接口和影响范围，生成或持续维护模块迭代文档。 | `$developer-skills:frontend-ai-dev-docs` 总结订单模块本次功能变动，写入模块功能迭代总结。 |
@@ -25,6 +27,16 @@ codex plugin add developer-skills@developer-skills
 | `swift-code-style` | 在 Swift 编写、重构及审查中应用命名、API、格式、安全解包与引用管理规范。 | `$developer-skills:swift-code-style` 按项目规范调整本次 Swift 改动。 |
 
 调用示例中的页面、模块、参考图和改动范围需替换为实际目标，并提供相关材料。Skill 也可能按任务描述自动触发；需要明确选用时，从技能列表选择或显式输入名称。
+
+## 代码审查
+
+`code-review` 默认检查当前已暂存和未暂存改动，也可指定文件、提交、分支或 PR；没有当前改动时不自动审查最近提交。分别核对需求与规范，区分已确认缺陷、待确认和关键验证缺口；低优先级真实缺陷仍报告，可选简化或优化建议仅在明确要求时展开。
+
+默认由当前审查者完成。需要协作时可明确要求“允许子代理协作，最多调用 3 次，预留一次复核关键发现”；deep 默认总调用上限为 3，包含分线、复核和重新委派，仍受授权、宿主和 agent-fit 限制。审查不会自动修复或进行 Git 写操作。
+
+协作采用公共交接契约及 A 需求核对、B 契约追踪、C 边界检查、D 独立复核模板，按需选择；候选提出者不能承担该候选的独立复核。未委派维度和整体覆盖仍由主审负责。纯解释代码、分析 Skill 或评审改造计划不启动代码审查。
+
+code-review 已于 2026-10-28 经用户验收通过，纳入 v0.1.5。使用时确认实际加载路径、版本与依赖。改造范围、可执行样例和验证限制见[评测入口](docs/code-review-evaluation.md)及[验证记录](docs/code-review-validation.md)；本次发布不额外宣称已完成严格隔离对照、真实协作或真实业务仓库测试。
 
 ## 页面复刻与局部样式调整
 

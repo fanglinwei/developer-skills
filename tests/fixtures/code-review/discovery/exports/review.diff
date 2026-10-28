@@ -1,0 +1,23 @@
+--- before/exporter.py
++++ after/exporter.py
+@@ -1,3 +1,3 @@
+-def export_rows(records):
+-    return [{'id': row['id'], 'amount': row['amount']}
++def export_rows(records, include_archived=False):
++    return [{'id': row['id'], 'amount': row['amount'], 'status': row['status']}
+             for row in records if not row['archived']]
+--- before/tests/test_exporter.py
++++ after/tests/test_exporter.py
+@@ -0,0 +1,12 @@
++import unittest
++from exporter import export_rows
++
++
++class ExportTests(unittest.TestCase):
++    def test_default(self):
++        rows = [{'id': 1, 'amount': 20, 'status': 'paid', 'archived': False},
++                {'id': 2, 'amount': 30, 'status': 'paid', 'archived': True}]
++        self.assertEqual(export_rows(rows), [{'id': 1, 'amount': 20, 'status': 'paid'}])
++
++    def test_empty(self):
++        self.assertEqual(export_rows([]), [])

@@ -5,18 +5,26 @@
       "name": "code-review",
       "origin": ".agents/skills/code-review",
       "changes": [
-        "Replace three machine-specific dependency paths with bundled or installed skill lookup."
+        "Replace three machine-specific dependency paths with bundled or installed skill lookup.",
+        "Add evidence gates, change attribution, explicit requirements and standards, impact-based defect priority, separate validation gaps, and opt-in improvements.",
+        "Add an original on-demand agent collaboration reference for authorized bounded delegation, isolated judgment contexts, independent refutation and integration.",
+        "Implement shared task contracts and A-D investigation templates with selection, stop conditions and one integrated return; narrow metadata triggers and verify loaded skill provenance."
       ],
       "files": [
         {
           "path": "SKILL.md",
           "source_sha256": "89cc2f7a929e685995fde69edf0d8e990930249a210925ccf5956652f3d48dd1",
-          "packaged_sha256": "524dade488318ebbc0b5aa56bf0e5adb764ae5f09735c0efe356771cfdeefaad"
+          "packaged_sha256": "35d5d270f658023525f2f655c1d4a5da60cb1ec40436d8379619113ba620a335"
         },
         {
           "path": "agents/openai.yaml",
           "source_sha256": "697fcea19b8790b02249fc5f182c436898b978d5ea49d1111c58cc49dc64e2c1",
           "packaged_sha256": "697fcea19b8790b02249fc5f182c436898b978d5ea49d1111c58cc49dc64e2c1"
+        },
+        {
+          "path": "references/agent-collaboration.md",
+          "source_sha256": "0f82d8f4f074265499a954f283f5b32f6acdc7e598fceebde02a5623d0a6d695",
+          "packaged_sha256": "ec2aabedd50ba86448c57b0f2f0f43d4567f9d1518024a404f9b48696e189c96"
         }
       ]
     },

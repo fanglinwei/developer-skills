@@ -1,0 +1,25 @@
+--- before/pricing.py
++++ after/pricing.py
+@@ -1,6 +1,2 @@
+-from decimal import Decimal
+-
+-
+ def total(items):
+-    cents = sum(item['unit_cents'] * item['quantity'] for item in items)
+-    return Decimal(cents) / 100
++    return sum(item['unit_cents'] * item['quantity'] for item in items)
+--- before/tests/test_pricing.py
++++ after/tests/test_pricing.py
+@@ -0,0 +1,12 @@
++import unittest
++from pricing import total
++
++
++class PricingTests(unittest.TestCase):
++    def test_integer_cents(self):
++        result = total([{'unit_cents': 1250, 'quantity': 2}])
++        self.assertEqual(result, 2500)
++        self.assertIsInstance(result, int)
++
++    def test_empty(self):
++        self.assertEqual(total([]), 0)

@@ -1,0 +1,198 @@
+{
+  "format": "manual-rule-scenarios-v1",
+  "purpose": "冻结规则场景与预期判定；不是实际模型输出或运行结果。片段是不可执行的审查材料。",
+  "cases": [
+    {
+      "id": "C01",
+      "title": "上游已限制输入",
+      "input": "before: scale(x, n) returns x/n. after: refactor scale only. handler calls scale only after `if n <= 0: raise ValueError()`; no other callers.",
+      "candidate": "“scale 没有校验零分母”",
+      "expected": "已排除",
+      "decisive_reason": "上游保证 n>0，零值路径不可达。"
+    },
+    {
+      "id": "C02",
+      "title": "数据库提供原子约束",
+      "input": "after: `INSERT INTO claims(key) VALUES (?)`; schema has UNIQUE(key), caller catches unique violation and returns existing claim.",
+      "candidate": "“并发会创建两个相同 key”",
+      "expected": "已排除",
+      "decisive_reason": "数据库唯一约束和已读冲突处理反证重复记录。"
+    },
+    {
+      "id": "C03",
+      "title": "需求允许的行为变化",
+      "input": "current spec §2: empty export returns an empty CSV instead of error. diff changes `throw Empty()` to `return header`.",
+      "candidate": "“空输入不再抛错导致回归”",
+      "expected": "已排除",
+      "decisive_reason": "当前规格明确允许，不以旧行为否定需求。"
+    },
+    {
+      "id": "C04",
+      "title": "未知部署前提",
+      "input": "api.py:10 trusts X-Actor for owner_id. ingress config and caller identity are absent. Spec: only trusted proxy may set X-Actor.",
+      "candidate": "“外部攻击者可直接伪造身份”",
+      "expected": "待确认",
+      "decisive_reason": "路径具体，但决定性 ingress 清洗和可达性未知；明确最小取证，防护存在则排除，无防护且可达则确认。"
+    },
+    {
+      "id": "C05",
+      "title": "无路径猜测",
+      "input": "diff only changes CLI help text; no evidence about storage, concurrency, or external users.",
+      "candidate": "“未来高并发可能损坏数据”",
+      "expected": "已排除",
+      "decisive_reason": "没有具体路径和可检验主张，不挪入待确认。"
+    },
+    {
+      "id": "C06",
+      "title": "无关既有问题",
+      "input": "before and after: unused legacy_parser returns None for empty input. diff changes unrelated active report title; no dependency on legacy_parser.",
+      "candidate": "“legacy_parser 空输入有问题”",
+      "expected": "已排除",
+      "decisive_reason": "与本次改动无关且不阻碍当前安全使用。"
+    },
+    {
+      "id": "C07",
+      "title": "改动使旧问题首次可达",
+      "input": "before: handler -> safe_parse. after: handler -> legacy_parse. legacy_parse.py:8 (unchanged): `return 10 / int(raw)`; input accepts raw=\"0\" with no guard.",
+      "candidate": "“legacy_parse 的零除位于未修改行，不能报告”",
+      "expected": "已确认缺陷/中",
+      "decisive_reason": "新调用使零除首次可达；归因在 handler，问题位置允许在未修改行。"
+    },
+    {
+      "id": "C08",
+      "title": "真实租户越权",
+      "input": "spec: tenants read only own records. before get(id): SELECT WHERE id=? AND tenant=current. after: SELECT WHERE id=?; route authenticated, IDs known to callers, no downstream ownership check.",
+      "candidate": "“租户 A 可读取 B 的记录”",
+      "expected": "已确认缺陷/高",
+      "decisive_reason": "认证不等于资源授权；跨租户后果与路径成立。"
+    },
+    {
+      "id": "C09",
+      "title": "真实数据丢失",
+      "input": "normal save(path, bytes), valid existing user file. before: write tmp then atomic replace. after: open(path,\"w\") then write; writer throws on first write, caller catches and returns error; no backup.",
+      "candidate": "“正常保存失败会清空旧文件”",
+      "expected": "已确认缺陷/高",
+      "decisive_reason": "在截断后失败已损失重要原数据；最小修复恢复安全写入，建议验证失败分支。"
+    },
+    {
+      "id": "C10",
+      "title": "调用契约破坏",
+      "input": "before fetch() returns {id: 7}. after returns null on successful fetch; active caller unconditionally reads result.id and spec promises record on success.",
+      "candidate": "“成功路径调用方崩溃”",
+      "expected": "已确认缺陷/高",
+      "decisive_reason": "活跃主流程契约和调用方可核实，不只凭兼容性类别分级。"
+    },
+    {
+      "id": "C11",
+      "title": "真实并发缺陷",
+      "input": "two authenticated workers operate same account. diff replaces transactional debit with: read balance=100; if >=80: set balance=20; ship order. two workers interleave reads and both ship. no database lock/idempotency.",
+      "candidate": "“两个订单以一次扣款发货”",
+      "expected": "已确认缺陷/高",
+      "decisive_reason": "指定交错使资金/状态不一致；不能用可能性泛称，需要这条交错。"
+    },
+    {
+      "id": "C12",
+      "title": "需求遗漏与部分实现",
+      "input": "spec §1 requires export of archived and active records, including batch path. diff adds export but filters active=true; batch export absent.",
+      "candidate": "“归档和批量导出要求未完整实现”",
+      "expected": "已确认缺陷/中",
+      "decisive_reason": "引用两个明确要求，指出实现和测试对应缺失；同根因可合并，保留独立遗漏。"
+    },
+    {
+      "id": "C13",
+      "title": "合理配套实现与范围扩张",
+      "input": "spec requires CSV export. A diff adds escaping quotes and bad-input errors. B diff additionally sends customer rows to an external analytics endpoint, not needed for export and contrary to no-third-party-sharing requirement.",
+      "candidate": "“A/B 都是规格未列的额外行为”",
+      "expected": "A 已排除；B 已确认缺陷/高",
+      "decisive_reason": "必要配套工作不算越界；B 有明确禁止与真实数据外发路径，不仅因未提及而报告。"
+    },
+    {
+      "id": "C14",
+      "title": "需求来源冲突与缺少规格",
+      "input": "user current acceptance: retain 30 days; old issue: 7 days. diff uses 30. Second target has no spec but changes `remove(file)` before confirmed upload.",
+      "candidate": "“按旧 issue 报 30 天错误，并停止无规格审查”",
+      "expected": "前者已排除；后者继续检查",
+      "decisive_reason": "采用当前权威要求；缺规格只限制需求符合性，继续核查可确认的数据损失契约。"
+    },
+    {
+      "id": "C15",
+      "title": "规范与启发式冲突",
+      "input": "CONTRIBUTING §IDs: public IDs stay strings. diff adds string ID with clear name; no behavioral defect or maintenance burden.",
+      "candidate": "“必须把字符串包装成领域类”",
+      "expected": "已排除",
+      "decisive_reason": "项目规范覆盖启发式；不增加无收益抽象。专项规范核对引用实际条款。"
+    },
+    {
+      "id": "C16",
+      "title": "关键验证缺口",
+      "input": "diff introduces transactional retry with idempotency key. source shows intended protection, no established defect. current tests cover only first successful commit. suggested scenario: commit result unknown then retry same key; assert one durable debit.",
+      "candidate": "“没有失败重试测试，所以一定重复扣款”",
+      "expected": "关键验证缺口",
+      "decisive_reason": "关键行为、具体错误实现、能识别它的场景三项成立，无等效验证；不认定代码已错。"
+    },
+    {
+      "id": "C17",
+      "title": "已有等效验证与仅缺测试文件",
+      "input": "current parameterized test already covers same key after unknown commit and asserts one debit; no new test file. separate new pure label mapping lacks test, without key-behavior evidence.",
+      "candidate": "“必须新增测试文件，两处都报中优先级”",
+      "expected": "已排除",
+      "decisive_reason": "等效现有测试满足验证；缺文件或新分支本身不满足关键缺口。"
+    },
+    {
+      "id": "C18",
+      "title": "低影响真实缺陷",
+      "input": "optional plain-text export footer promised one newline. diff returns two for empty optional footer; header/body valid, no data loss, no other consumers.",
+      "candidate": "“功能错误一律高，或低优先级默认隐藏”",
+      "expected": "已确认缺陷/低",
+      "decisive_reason": "具体错误仍报告，严重程度低，不与可选建议混淆。"
+    },
+    {
+      "id": "C19",
+      "title": "负载和复杂度证据",
+      "input": "local CLI reads max 8 entries by validated config; diff uses nested scan with <=64 comparisons. a function is 70 lines but one coherent task; shortcut documents 8-entry limit.",
+      "candidate": "“O(n²)、函数长，所以必须缓存并拆 helper”",
+      "expected": "已排除",
+      "decisive_reason": "负载未突破限制，无实际性能或维护后果；用户要求时才展开有证据的可选收益。"
+    },
+    {
+      "id": "C20",
+      "title": "同根因多路径与恢复分支",
+      "input": "HTTP and batch both call same shared writer; cancellation and retry also call writer. writer bug has identical cause, but recovery retains stale state.",
+      "candidate": "“分别报告四个完全相同问题”",
+      "expected": "一条根因，保留路径和恢复影响",
+      "decisive_reason": "不重复编号，不因合并而丢失取消/重试分支的必要修复和验证。"
+    },
+    {
+      "id": "C21",
+      "title": "冲突、未覆盖与合入判断",
+      "input": "reviewer A claims tenant bypass without reading router; B shows router ownership guard. migration path assigned but not read.",
+      "candidate": "“拼接 A/B 或按多数票确认，然后建议合入”",
+      "expected": "核实防护；关键覆盖缺失限制合入",
+      "decisive_reason": "主审重读真实控制，反证则撤销；不可裁决则待确认；不得把部分覆盖说完整。"
+    },
+    {
+      "id": "C22",
+      "title": "版本变化",
+      "input": "reviewer examined revision S1 with no owner guard. worktree now S2 includes guard; index remains S1. target is worktree.",
+      "candidate": "“把 S1 的问题和旧行号贴到 S2”",
+      "expected": "重核目标及证据",
+      "decisive_reason": "区分索引与工作区，按 S2 重读；旧候选不自动成立，不创建 Git 快照。"
+    },
+    {
+      "id": "C23",
+      "title": "授权、预算与调用",
+      "input": "deep request without delegation authorization => 0 calls. authorized budget=3: two review calls plus one retry consumed 3; a new verifier is proposed.",
+      "candidate": "“deep 自动委派，或重试不计数再派复核”",
+      "expected": "不新增调用；披露复核限制",
+      "decisive_reason": "授权与累计预算同时满足；主审可继续，但必需独立复核未完成不能称完整。"
+    },
+    {
+      "id": "C24",
+      "title": "交接完整性、隔离与反证",
+      "input": "independent reviewer gets exact diff and spec but no principal map; parent has unverified suspicion. two reviewers agree without tracing sink. fresh verifier later locates guard.",
+      "candidate": "“隐藏所有事实，只传怀疑结论；两票确认；复核不能否定主审”",
+      "expected": "补事实隔离预判；按防护撤销",
+      "decisive_reason": "交接补权限模型与适用 Skill；角色不诱导；不读同伴草稿；不同目录不等于 OS 隔离；真实独立复核可否定。"
+    }
+  ]
+}

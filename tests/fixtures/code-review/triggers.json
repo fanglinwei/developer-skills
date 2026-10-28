@@ -1,0 +1,10 @@
+[
+  {"query": "帮我 review 当前分支相对 main 的订单结算改动，重点看返回值变化有没有影响旧调用方。", "should_trigger": true},
+  {"query": "审查这个 PR 的租户权限改动，只读报告，需求在 docs/spec.md。", "should_trigger": true},
+  {"query": "检查下面这个函数有没有空值和错误恢复问题，不修改代码。", "should_trigger": true},
+  {"query": "本次实现完成，请进入代码审查步骤，检查未提交改动。", "should_trigger": true},
+  {"query": "解释 code-review Skill 的工作方式，尤其是 daily 和 deep 的区别。", "should_trigger": false},
+  {"query": "使用 skill-creator review 这份 Skill 改造计划，看看评测方法是否足够。", "should_trigger": false},
+  {"query": "修改 code-review Skill 的触发描述，让它排除纯方案讨论。", "should_trigger": false},
+  {"query": "帮我查找 run_checkout 的实现位置和调用方，先不评价代码质量。", "should_trigger": false}
+]
