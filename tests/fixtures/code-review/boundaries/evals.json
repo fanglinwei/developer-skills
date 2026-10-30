@@ -1,0 +1,32 @@
+{
+  "skill_name": "code-review",
+  "evals": [
+    {
+      "id": 101,
+      "name": "protected-refactor",
+      "prompt": "daily审查before到after的订单读取重构，核对当前需求、关联调用和实际检查，给出只读结论。",
+      "files": [
+        "../discovery/protected-read"
+      ],
+      "expected_output": "沿现有服务层防护排除越权；不把已有等效测试重复算缺口。"
+    },
+    {
+      "id": 102,
+      "name": "classification",
+      "prompt": "deep审查本次快照下载校验和报表入口，需求见SPEC.md。审查全部新增文件，给出分类明确的只读报告和是否可合入的依据。",
+      "files": [
+        "classification"
+      ],
+      "expected_output": "身份来源的部署事实待确认；校验实现未证实错但现有单正例不能拒绝错误摘要，给具体关键验证缺口。"
+    },
+    {
+      "id": 103,
+      "name": "acceptance",
+      "prompt": "请用daily审查这次统计CSV导出简化，需求见SPEC.md，核对调用方、当前行为和可合入性。只报告，不修改。",
+      "files": [
+        "acceptance"
+      ],
+      "expected_output": "有限影响的分值截断回归仍违反必要验收，不因中低严重度建议直接合入。"
+    }
+  ]
+}

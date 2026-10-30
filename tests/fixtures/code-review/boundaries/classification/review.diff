@@ -1,0 +1,34 @@
+--- before/bundle.py
++++ after/bundle.py
+@@ -1 +0,0 @@
+-# Snapshot verification and report entry did not exist.
+--- before/check_existing.py
++++ after/check_existing.py
+@@ -0,0 +1,5 @@
++import hashlib
++from integrity import verify_snapshot
++data = b'release snapshot'
++assert verify_snapshot(data, hashlib.sha256(data).hexdigest()) is True
++print('valid snapshot check passed')
+--- before/integrity.py
++++ after/integrity.py
+@@ -0,0 +1,4 @@
++import hashlib
++
++def verify_snapshot(data, manifest_digest):
++    return hashlib.sha256(data).hexdigest() == manifest_digest
+--- before/reports.py
++++ after/reports.py
+@@ -0,0 +1,3 @@
++def report(request_headers, store):
++    principal = request_headers['X-Principal']
++    return store.for_user(principal)
+--- before/store.py
++++ after/store.py
+@@ -0,0 +1,6 @@
++class ReportStore:
++    def __init__(self, reports):
++        self.reports = reports
++
++    def for_user(self, principal):
++        return self.reports[principal]

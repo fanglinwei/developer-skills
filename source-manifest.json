@@ -9,23 +9,33 @@
         "Add evidence gates, change attribution, explicit requirements and standards, impact-based defect priority, separate validation gaps, and opt-in improvements.",
         "Add an original on-demand agent collaboration reference for authorized bounded delegation, isolated judgment contexts, independent refutation and integration.",
         "Implement shared task contracts and A-D investigation templates with selection, stop conditions and one integrated return; narrow metadata triggers and verify loaded skill provenance.",
-        "Remove the mandatory frontend guard dependency for Web review while retaining the review workflow Web checks and applicable karpathy-guidelines."
+        "Separate acceptance blockers from defect severity, compact repeated guidance, and add on-demand classification/report examples; retain mandatory dependencies.",
+        "Recheck target content before finalizing; integrate requirement mapping into findings and report coverage only when it changes understanding, avoiding repeated conclusions.",
+        "Ground skill-loading and command claims in observed tool results; make the compact three-part daily report the default without removing evidence fields.",
+        "Remove the mandatory frontend guard dependency for Web review while retaining the review workflow Web checks and applicable karpathy-guidelines.",
+        "Unify dependency loading across modes and domains: keep ponytail-review required, load karpathy-guidelines for consequential ambiguity or repair tradeoffs, move Web checks into the review workflow, and distinguish required from optional unavailability.",
+        "Trace actual instances and behavioral paths across async state, data contracts and trust boundaries; verify test assertions, auxiliary facts and repair completeness, then deliver without evaluation work."
       ],
       "files": [
         {
           "path": "SKILL.md",
           "source_sha256": "89cc2f7a929e685995fde69edf0d8e990930249a210925ccf5956652f3d48dd1",
-          "packaged_sha256": "f9ca9483c24e821d43cf63581faf9b71a373229754acbcfb8976edc87e81fc82"
+          "packaged_sha256": "60096457e9b42b94f17ff5fa21a55016e8fd6a837022a9c6b9754a78c1d9cb5a"
         },
         {
           "path": "agents/openai.yaml",
           "source_sha256": "697fcea19b8790b02249fc5f182c436898b978d5ea49d1111c58cc49dc64e2c1",
-          "packaged_sha256": "697fcea19b8790b02249fc5f182c436898b978d5ea49d1111c58cc49dc64e2c1"
+          "packaged_sha256": "0b10910dab3b82799fd409e39d84a3fc044b0626d82eb5f48e8692fd814ebf1d"
         },
         {
           "path": "references/agent-collaboration.md",
           "source_sha256": "0f82d8f4f074265499a954f283f5b32f6acdc7e598fceebde02a5623d0a6d695",
-          "packaged_sha256": "ec2aabedd50ba86448c57b0f2f0f43d4567f9d1518024a404f9b48696e189c96"
+          "packaged_sha256": "61795ca9635bf2959e248c8aa258ae9e39314283dfcdc6e362400f7253685acb"
+        },
+        {
+          "path": "references/review-examples.md",
+          "source_sha256": null,
+          "packaged_sha256": "07d1b5049d93e1a0d7a4517db35762e592bfc8c28cdba7e3ee59b93c9c8e636f"
         }
       ]
     },

@@ -5,7 +5,7 @@
 ## 安装与更新
 
 ```sh
-codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.5
+codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.6
 codex plugin add developer-skills@developer-skills
 ```
 
@@ -13,13 +13,13 @@ codex plugin add developer-skills@developer-skills
 
 ```sh
 codex plugin marketplace remove developer-skills
-codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.5
+codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.6
 codex plugin add developer-skills@developer-skills
 ```
 
 安装后重启 Codex 或开启新聊天，从技能列表选择 `developer-skills` 下的对应 Skill。
 
-当前发布版本：[v0.1.5](https://github.com/fanglinwei/developer-skills/releases/tag/v0.1.5)。本版更新 code-review 的证据分类、需求与规范核对、按需协作职责及独立复核规则，其余 7 个 Skill 保持不变。
+当前发布版本：[v0.1.6](https://github.com/fanglinwei/developer-skills/releases/tag/v0.1.6)。本版完善 code-review 的实际调用与行为追踪、证据判断及最小完整修复建议，同时发布 CodeGraph 索引同步改进与精简的 frontend-coding-guard。
 
 ## Skill 与用法
 
@@ -41,6 +41,8 @@ codex plugin add developer-skills@developer-skills
 使用 `code-review` 检查代码正确性、安全、需求符合性和调用影响。你可以说“帮我 review 当前改动”，也可以指定文件、提交、分支或 PR。Codex 按任务选择模式，读取相关实现、调用方和测试，输出审查报告及最小修复建议。
 
 完整规则见 [code-review Skill](skills/code-review/SKILL.md)。
+
+本版 code-review 已定稿：核实真实调用实例，按行为追踪异步状态、接口数据与权限/持久化路径，检查测试实际断言，并给出覆盖失败和清理分支的最小完整修复。保留 daily/deep、证据分类和紧凑报告，提供按需[分类与报告示例](skills/code-review/references/review-examples.md)。具体交付见[改进记录](docs/code-review-2026-10-30.md)。上述改进包含在 v0.1.6 标签和发布包中。
 
 ### 功能特色
 
@@ -111,9 +113,10 @@ $developer-skills:code-review daily 检查这个 Web 页面改动，附上可选
 
 ### 依赖与执行边界
 
-- 所有审查都需要已安装的 `ponytail-review`。非浏览器 Web 前端审查按需结合 `karpathy-guidelines`。
-- 浏览器 Web 前端审查在两种模式下都结合 `karpathy-guidelines`。语义与键盘、响应式、类型与状态、异步恢复、客户端安全及性能由审查流程按实际改动核查，不强制调用 `frontend-coding-guard`。
-- 审查者会核对实际加载的 Skill 与依赖路径。缺少依赖时，停止依赖它的部分，继续其他独立检查，并披露未覆盖范围；工具包不代为安装依赖。
+- daily/deep 均以 `ponytail-review` 为必需依赖；`karpathy-guidelines` 仅在关键需求歧义、修复方案的范围/复杂度取舍或专项简化时按需辅助，不因 Web 或 deep 自动加载。用户与项目的明确要求优先。
+- Web 的语义与键盘、响应式、类型与状态、异步恢复、客户端安全及性能由审查流程按实际改动核查，无需额外前端开发 Skill。必需依赖缺失时披露受阻部分；可选辅助不可用时仍依据主流程继续。
+- 审查者核对实际加载来源，仅将实际读取并应用的 Skill 称为“已使用”；工具包不代为安装依赖。
+- “已使用 Skill”“已运行/失败/被拒绝”的陈述以实际读取和工具结果为据；复合命令分别判断查询、差异与测试。daily 默认按范围与结论、发现、实际验证三段组织，保留证据并去掉重复收尾。
 - 审查者只输出报告和建议。修改代码、测试、配置、格式，以及 Git 写操作，需要另行授权。
 - 审查者可以运行相关的现有最小检查，前提是不会改写源码、快照、锁文件或业务数据，也不访问生产系统或执行外部写入。有疑似副作用时，采用静态证据并说明限制。审查期间不安装或升级依赖、不新建测试文件、不启动长期服务。
 
@@ -135,7 +138,7 @@ $developer-skills:code-review deep 以 main 为基准审查当前分支。
 
 ### 版本与验证记录
 
-code-review 已于 2026-10-28 经用户验收，纳入 v0.1.5。改造范围、可执行样例和验证限制见[评测入口](docs/code-review-evaluation.md)及[验证记录](docs/code-review-validation.md)。严格隔离对照、真实代理协作和真实业务仓库测试仍未完成。
+code-review 的本次最终改进纳入 v0.1.6，交付范围与验证限制见[改进记录](docs/code-review-2026-10-30.md)。v0.1.5 的历史证据见[评测入口](docs/code-review-evaluation.md)及[验证记录](docs/code-review-validation.md)，不将旧版结果作为新版准确率或效率提升的证明。
 
 ## 页面复刻与局部样式调整
 

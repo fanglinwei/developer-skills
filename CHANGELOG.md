@@ -2,11 +2,15 @@
 
 ## Unreleased
 
-- Web 审查不再强制加载前端守护 Skill，保留审查流程自身的 Web 检查及 karpathy-guidelines。
+## 0.1.6 — 2026-10-30
 
-- frontend-coding-guard（原 frontend-safe-development）精简为隐式触发的 Web 安全附加规则，覆盖 HTML/最终 URL、秘密与授权、未知写入和异步恢复；新增按需质量参考，同步调用方、来源清单和校验。改造与评测保存在仓库旁的 frontend-safe-dev-eval 中。
-
-- codegraph-project-scan 精简流程，按源码变更使同步结果失效，补齐同轮再次查询前的索引维护；无索引默认按项目规则回退，仅显式启用时初始化。Codex hooks 保留为可选方案，评估见 docs/codegraph-scan-optimization.md。
+- code-review 按行为追踪真实调用实例、异步状态、接口数据及权限/持久化路径，分别核实核心主张与辅助事实，检查测试实际断言和替身边界。
+- 最小修复建议覆盖成功、失败、并发和清理分支；区分缺陷严重度与必要验收阻断，完成范围内审查后直接交付紧凑报告。
+- daily/deep 与前后端统一以 ponytail-review 为必需依赖，karpathy-guidelines 按关键歧义或方案取舍调用；Web 检查由审查流程承担，无需额外前端开发 Skill。
+- 增加按需分类与修复示例及配套边界样例，核对实际加载、命令结果和报告前目标变化；同步来源摘要与引用校验。
+- CodeGraph 检索前同步已有索引，源码再次变化时重新同步；无索引按项目规则回退，仅显式启用时初始化。
+- frontend-safe-development 精简并更名为 frontend-coding-guard，聚焦 HTML/URL、秘密与授权、未知写入及异步恢复；旧显式调用名称需更新。
+- 同步插件版本、安装更新命令与发布说明。发布包结构校验及 15 项既有测试通过，不据此宣称模型准确率或效率提升。
 
 ## 0.1.5 — 2026-10-28
 
