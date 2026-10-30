@@ -8,13 +8,14 @@
         "Replace three machine-specific dependency paths with bundled or installed skill lookup.",
         "Add evidence gates, change attribution, explicit requirements and standards, impact-based defect priority, separate validation gaps, and opt-in improvements.",
         "Add an original on-demand agent collaboration reference for authorized bounded delegation, isolated judgment contexts, independent refutation and integration.",
-        "Implement shared task contracts and A-D investigation templates with selection, stop conditions and one integrated return; narrow metadata triggers and verify loaded skill provenance."
+        "Implement shared task contracts and A-D investigation templates with selection, stop conditions and one integrated return; narrow metadata triggers and verify loaded skill provenance.",
+        "Remove the mandatory frontend guard dependency for Web review while retaining the review workflow Web checks and applicable karpathy-guidelines."
       ],
       "files": [
         {
           "path": "SKILL.md",
           "source_sha256": "89cc2f7a929e685995fde69edf0d8e990930249a210925ccf5956652f3d48dd1",
-          "packaged_sha256": "35d5d270f658023525f2f655c1d4a5da60cb1ec40436d8379619113ba620a335"
+          "packaged_sha256": "f9ca9483c24e821d43cf63581faf9b71a373229754acbcfb8976edc87e81fc82"
         },
         {
           "path": "agents/openai.yaml",
@@ -99,14 +100,23 @@
       ]
     },
     {
-      "name": "frontend-safe-development",
+      "name": "frontend-coding-guard",
       "origin": ".agents/skills/frontend-safe-development",
-      "changes": [],
+      "changes": [
+        "Use task-based implicit invocation and condense overlapping coding rules into Web trust-boundary and safe-recovery guidance; verify final URL sinks after transformations.",
+        "Keep a compact implicit Web safety overlay; carry detailed frontend quality gaps through an on-demand reference without assuming K+P covers every rule.",
+        "Rename frontend-safe-development to frontend-coding-guard; preserve the compact implicit safety guidance and original source provenance."
+      ],
       "files": [
         {
           "path": "SKILL.md",
           "source_sha256": "c7736307629c7a09e9d9b99029866848f1436219656ee104327be0012a16c5b7",
-          "packaged_sha256": "c7736307629c7a09e9d9b99029866848f1436219656ee104327be0012a16c5b7"
+          "packaged_sha256": "136aaab0550571369977edc921003155c4a94fc648da06c282a5597e326663b8"
+        },
+        {
+          "path": "references/frontend-quality.md",
+          "source_sha256": null,
+          "packaged_sha256": "5dfd0c1fc73d237c037ab2fb33b779f56a250d809279e4f8dd75e7626c086a13"
         }
       ]
     },

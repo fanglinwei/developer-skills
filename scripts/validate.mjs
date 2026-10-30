@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync, realpathSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, realpathSync } from 'node:fs';
 import { dirname, extname, isAbsolute, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const SKILLS = new Set([
   'code-review', 'code-simplifier', 'codegraph-project-scan',
-  'frontend-ai-dev-docs', 'frontend-page-clone', 'frontend-safe-development',
+  'frontend-ai-dev-docs', 'frontend-page-clone', 'frontend-coding-guard',
   'frontend-style-clone', 'swift-code-style',
 ]);
 
@@ -68,7 +68,6 @@ export function validate(directory) {
     assert(front.split('\n').includes(`name: ${name}`), `Wrong skill name: ${name}`);
     assert(/^description: \S.+$/m.test(front), `Missing description: ${name}`);
   }
-  assert(statSync(resolve(root, 'skills/frontend-safe-development/SKILL.md')).isFile(), 'Missing bundled review dependency');
 
   const snapshot = readJson(resolve(root, 'source-manifest.json'));
   assert.deepEqual(new Set(snapshot.skills.map(skill => skill.name)), SKILLS, 'Wrong source records');
@@ -96,6 +95,8 @@ export function validate(directory) {
     'skills/codegraph-project-scan/agents/openai.yaml',
     'skills/frontend-page-clone/SKILL.md',
     'skills/frontend-page-clone/references/element-ui-checklist.md',
+    'skills/frontend-coding-guard/SKILL.md',
+    'skills/frontend-coding-guard/references/frontend-quality.md',
   ], 'Unexpected source adaptations');
 
   for (const path of files) {

@@ -30,7 +30,7 @@ codex plugin add developer-skills@developer-skills
 | `codegraph-project-scan` | 代码检索或读取前更新已有索引，同轮改动后重新同步；无索引或工具不可用时按项目规则回退。 | `$developer-skills:codegraph-project-scan` 查找订单提交入口及调用链。 |
 | `frontend-ai-dev-docs` | 按功能梳理前后变化、交互、接口和影响范围，生成或持续维护模块迭代文档。 | `$developer-skills:frontend-ai-dev-docs` 总结订单模块本次功能变动，写入模块功能迭代总结。 |
 | `frontend-page-clone` | 根据示例代码、网页或截图复刻页面或模块，复用项目组件，已有项目优先沿用原接口，缺口按需局部 mock。 | `$developer-skills:frontend-page-clone` 按这张截图复刻指定页面，采用原样复刻档位。 |
-| `frontend-safe-development` | 约束浏览器 Web 前端开发，保持技术栈，检查相关状态、无障碍、安全和错误恢复。 | `$developer-skills:frontend-safe-development` 按项目现有方案修改这个表单。 |
+| `frontend-coding-guard` | 隐式触发的精简 Web 安全附加规则，覆盖 HTML/URL、秘密与授权、未知写入及异步恢复；质量细节按需参考。 | `$developer-skills:frontend-coding-guard` 检查这个表单的提交与失败恢复边界。 |
 | `frontend-style-clone` | 对齐局部布局、字体、颜色、控件和动画，保留现有业务数据、文案与交互。 | `$developer-skills:frontend-style-clone` 按参考图调整这个弹窗的外观。 |
 | `swift-code-style` | 在 Swift 编写、重构及审查中应用命名、API、格式、安全解包与引用管理规范。 | `$developer-skills:swift-code-style` 按项目规范调整本次 Swift 改动。 |
 
@@ -112,7 +112,7 @@ $developer-skills:code-review daily 检查这个 Web 页面改动，附上可选
 ### 依赖与执行边界
 
 - 所有审查都需要已安装的 `ponytail-review`。非浏览器 Web 前端审查按需结合 `karpathy-guidelines`。
-- 浏览器 Web 前端审查在两种模式下都结合 `frontend-safe-development` 和 `karpathy-guidelines`，检查语义与键盘操作、响应式布局、状态、异步错误恢复、客户端安全及性能。此组合适用于混合项目中的浏览器 Web 部分。
+- 浏览器 Web 前端审查在两种模式下都结合 `karpathy-guidelines`。语义与键盘、响应式、类型与状态、异步恢复、客户端安全及性能由审查流程按实际改动核查，不强制调用 `frontend-coding-guard`。
 - 审查者会核对实际加载的 Skill 与依赖路径。缺少依赖时，停止依赖它的部分，继续其他独立检查，并披露未覆盖范围；工具包不代为安装依赖。
 - 审查者只输出报告和建议。修改代码、测试、配置、格式，以及 Git 写操作，需要另行授权。
 - 审查者可以运行相关的现有最小检查，前提是不会改写源码、快照、锁文件或业务数据，也不访问生产系统或执行外部写入。有疑似副作用时，采用静态证据并说明限制。审查期间不安装或升级依赖、不新建测试文件、不启动长期服务。

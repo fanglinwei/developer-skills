@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Web 审查不再强制加载前端守护 Skill，保留审查流程自身的 Web 检查及 karpathy-guidelines。
+
+- frontend-coding-guard（原 frontend-safe-development）精简为隐式触发的 Web 安全附加规则，覆盖 HTML/最终 URL、秘密与授权、未知写入和异步恢复；新增按需质量参考，同步调用方、来源清单和校验。改造与评测保存在仓库旁的 frontend-safe-dev-eval 中。
+
 - codegraph-project-scan 精简流程，按源码变更使同步结果失效，补齐同轮再次查询前的索引维护；无索引默认按项目规则回退，仅显式启用时初始化。Codex hooks 保留为可选方案，评估见 docs/codegraph-scan-optimization.md。
 
 ## 0.1.5 — 2026-10-28

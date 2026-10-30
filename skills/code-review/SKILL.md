@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: 审查代码改动、指定实现或 PR 的正确性、安全、需求符合性及调用影响；用户要求 review 当前改动、检查代码问题或工作流进入实际代码审查时必须使用。支持 daily/deep、证据准入及获授权的按需分线和独立复核，默认只读报告。仅解释代码、分析 Skill 或评审其改造计划不触发。依赖 ponytail-review；浏览器 Web 前端还结合 frontend-safe-development 和 karpathy-guidelines，其他代码按需结合 karpathy-guidelines。
+description: 审查代码改动、指定实现或 PR 的正确性、安全、需求符合性及调用影响；用户要求 review 当前改动、检查代码问题或工作流进入实际代码审查时必须使用。支持 daily/deep、证据准入及获授权的按需分线和独立复核，默认只读报告。仅解释代码、分析 Skill 或评审其改造计划不触发。依赖 ponytail-review；浏览器 Web 前端还结合 karpathy-guidelines，其他代码按需结合 karpathy-guidelines。
 ---
 
 # Code Review
@@ -17,7 +17,7 @@ description: 审查代码改动、指定实现或 PR 的正确性、安全、需
 
 - **所有代码审查：必须调用 `ponytail:ponytail-review`（或 `ponytail-review`）。** 按其基础流程执行，核实调用路径、具体触发场景、实际影响和最小修复建议。
 - **非浏览器 Web 前端的代码审查：`karpathy-guidelines` 按需调用。** 当审查需要处理需求歧义、过度设计、范围扩张、最小修复建议或验证方案时，读取并应用其中相关规则；优先从当前可用技能或插件目录定位并读取 `karpathy-guidelines` 的实际 `SKILL.md`。明确假设，控制建议范围，用可验证结果支持结论；不机械套用无关条目，不因规范建议扩大重构范围。普通静态查看、解释或纯调试不作为强制加载理由；任务进入代码创建、修改、调整或重构时，按用户及项目开发规则加载并遵守。
-- **涉及浏览器 Web 前端代码审查：必须同时调用 `frontend-safe-development` 和 `karpathy-guidelines`，daily/deep 两种模式均适用。** 优先读取本插件的 `../frontend-safe-development/SKILL.md`，并从当前可用技能或插件目录定位并读取 `karpathy-guidelines` 的实际 `SKILL.md`。结合前者审查组件、页面、样式、客户端状态、浏览器交互及无障碍，按改动检查语义和键盘操作、响应式布局、类型与状态、异步错误恢复、客户端安全及实际性能；结合后者明确假设、检查不必要的复杂度、控制修复建议范围并给出可验证结果。此处是用户为本 Review Skill 指定的专项组合，不扩展到普通查看、检索、解释等活动；不适用于移动端、桌面端和跨端 App，混合项目只应用到浏览器 Web 部分。
+- **浏览器 Web 代码两种模式都调用 `karpathy-guidelines`**，控制假设、复杂度、建议范围与验证。按项目规范和实际改动核查语义/键盘操作、响应式、类型与状态、异步恢复、客户端安全及性能。这些检查由本审查流程承担，不以额外前端 Skill 为前提；混合项目只应用到 Web 部分。
 
 适用 Skill 未列出时，搜索已安装的技能和插件目录；仍找不到或无法读取时，停止依赖它的审查部分，明确报告缺少的 Skill 和未覆盖范围，不静默降级、不宣称已完整审查，也不自动安装依赖。其他独立部分可继续。
 
@@ -147,7 +147,7 @@ daily 默认不委派，deep 也不自动委派。仅用户或适用指令明确
 ## 调用示例
 
 - `帮我 review 当前改动`：自动选择模式，读取适用 Skill，默认只读报告。
-- `检查这个 Web 页面改动`：同时使用 ponytail-review、frontend-safe-development 和 karpathy-guidelines。
+- `检查这个 Web 页面改动`：同时使用 ponytail-review 和 karpathy-guidelines，按实际改动核查 Web 行为与安全。
 - `$code-review daily 审查指定文件及调用影响`。
 - `$code-review deep 以 main 为基准，需求见 docs/spec.md`。
 - `$code-review deep 允许子代理协作，最多调用 3 次，预留一次复核关键发现`：按协作协议及宿主约束执行。

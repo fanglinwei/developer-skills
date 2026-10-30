@@ -38,6 +38,12 @@ test('changed skill content', t => {
   assert.throws(() => validate(root), /Checksum mismatch/);
 });
 
+test('missing frontend quality reference', t => {
+  const root = copyPackage(t);
+  unlinkSync(resolve(root, 'skills/frontend-coding-guard/references/frontend-quality.md'));
+  assert.throws(() => validate(root), { code: 'ENOENT' });
+});
+
 test('marketplace source outside package', t => {
   const root = copyPackage(t);
   const path = resolve(root, '.agents/plugins/marketplace.json');
