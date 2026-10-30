@@ -1,6 +1,6 @@
 interface:
-  display_name: "CodeGraph 项目代码扫描与检索"
-  short_description: "扫描或检索项目代码时使用，覆盖函数实现、引用与调用关系，支持当前工作目录"
-  default_prompt: "使用 $codegraph-project-scan 检索当前项目代码，定位相关实现、引用和调用关系。"
+  display_name: "CodeGraph 索引维护与代码检索"
+  short_description: "代码检索或读取前更新已有索引，同轮改动后重新同步，工具不可用时回退"
+  default_prompt: "使用 $codegraph-project-scan 在读取或检索当前项目代码前维护已有索引，再定位实现、引用和调用关系。"
 policy:
   allow_implicit_invocation: true

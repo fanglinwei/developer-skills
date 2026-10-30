@@ -48,17 +48,21 @@
     {
       "name": "codegraph-project-scan",
       "origin": ".agents/skills/codegraph-project-scan",
-      "changes": [],
+      "changes": [
+        "Compact repeated scanning guidance; maintain existing indexes before code reads and invalidate freshness after same-turn or external changes.",
+        "Follow project rules without mandatory initialization prompts for unindexed projects; retain explicit enablement and bounded recovery.",
+        "Align display metadata with index maintenance; assess optional Codex hooks separately without installing runtime integration."
+      ],
       "files": [
         {
           "path": "SKILL.md",
           "source_sha256": "1d0fb8ed3fa535cf63224929a5f45bd924dadf806a17c3668b2f9b17a2f05ac2",
-          "packaged_sha256": "1d0fb8ed3fa535cf63224929a5f45bd924dadf806a17c3668b2f9b17a2f05ac2"
+          "packaged_sha256": "a9e9705a4f7da3ab056cc1dbe023a33296a42921b1d92d2bf90555335da3c82f"
         },
         {
           "path": "agents/openai.yaml",
           "source_sha256": "8bc42b55b6ecb4e9a75ba7db28260da5f4575b93984cfd65c249d2c6db12c91d",
-          "packaged_sha256": "8bc42b55b6ecb4e9a75ba7db28260da5f4575b93984cfd65c249d2c6db12c91d"
+          "packaged_sha256": "6cbf7cbc1155da10a44fe88217000aa02ed3add4b7e3db1d1dd4448332e3cce1"
         }
       ]
     },

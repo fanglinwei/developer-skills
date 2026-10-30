@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- codegraph-project-scan 精简流程，按源码变更使同步结果失效，补齐同轮再次查询前的索引维护；无索引默认按项目规则回退，仅显式启用时初始化。Codex hooks 保留为可选方案，评估见 docs/codegraph-scan-optimization.md。
+
 ## 0.1.5 — 2026-10-28
 
 - code-review 经用户验收通过，发布为 0.1.5；同步插件版本与 README 安装、更新及使用说明。

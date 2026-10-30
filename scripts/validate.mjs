@@ -92,6 +92,8 @@ export function validate(directory) {
   assert.deepEqual(changed, [
     'skills/code-review/SKILL.md',
     'skills/code-review/references/agent-collaboration.md',
+    'skills/codegraph-project-scan/SKILL.md',
+    'skills/codegraph-project-scan/agents/openai.yaml',
     'skills/frontend-page-clone/SKILL.md',
     'skills/frontend-page-clone/references/element-ui-checklist.md',
   ], 'Unexpected source adaptations');

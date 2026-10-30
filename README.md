@@ -27,7 +27,7 @@ codex plugin add developer-skills@developer-skills
 | --- | --- | --- |
 | `code-review` | 按证据核实正确性、安全、需求与调用影响。支持 `daily`/`deep`，默认隐藏可选改进；获授权时按需分线与复核，只输出报告。 | `$developer-skills:code-review daily` 帮我审查当前改动。 |
 | `code-simplifier` | 简化近期修改的代码，保持原有功能与行为，遵循项目规范。 | `$developer-skills:code-simplifier` 简化本次修改。 |
-| `codegraph-project-scan` | 定位项目实现、引用和调用关系，按项目规则检查及使用 CodeGraph 索引。 | `$developer-skills:codegraph-project-scan` 查找订单提交入口及调用链。 |
+| `codegraph-project-scan` | 代码检索或读取前更新已有索引，同轮改动后重新同步；无索引或工具不可用时按项目规则回退。 | `$developer-skills:codegraph-project-scan` 查找订单提交入口及调用链。 |
 | `frontend-ai-dev-docs` | 按功能梳理前后变化、交互、接口和影响范围，生成或持续维护模块迭代文档。 | `$developer-skills:frontend-ai-dev-docs` 总结订单模块本次功能变动，写入模块功能迭代总结。 |
 | `frontend-page-clone` | 根据示例代码、网页或截图复刻页面或模块，复用项目组件，已有项目优先沿用原接口，缺口按需局部 mock。 | `$developer-skills:frontend-page-clone` 按这张截图复刻指定页面，采用原样复刻档位。 |
 | `frontend-safe-development` | 约束浏览器 Web 前端开发，保持技术栈，检查相关状态、无障碍、安全和错误恢复。 | `$developer-skills:frontend-safe-development` 按项目现有方案修改这个表单。 |
