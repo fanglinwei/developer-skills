@@ -99,6 +99,10 @@ export function validate(directory) {
     'skills/frontend-page-clone/references/element-ui-checklist.md',
     'skills/frontend-coding-guard/SKILL.md',
     'skills/frontend-coding-guard/references/frontend-quality.md',
+    'skills/frontend-style-clone/SKILL.md',
+    'skills/frontend-style-clone/references/web.md',
+    'skills/frontend-style-clone/references/mobile.md',
+    'skills/frontend-style-clone/references/desktop.md',
   ], 'Unexpected source adaptations');
 
   for (const path of files) {

@@ -1,7 +1,7 @@
 {
   "name": "developer-skills",
-  "version": "0.1.6",
-  "description": "个人编码工作流：代码审查与简化、CodeGraph 检索、前端开发与复刻、模块文档及 Swift 规范。",
+  "version": "0.1.7",
+  "description": "个人编码工作流：代码审查与简化、CodeGraph 检索、前端开发与跨平台界面复刻、模块文档及 Swift 规范。",
   "keywords": [
     "coding",
     "code-review",
@@ -12,8 +12,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Developer Skills",
-    "shortDescription": "个人编码工作流与前端复刻工具集",
-    "longDescription": "整合 8 个现有 Skill，保留各自触发条件、权限和验收规则。部分工作流按需依赖 Ponytail、grilling、Karpathy Guidelines 及 CodeGraph CLI。",
+    "shortDescription": "个人编码工作流与跨平台界面复刻工具集",
+    "longDescription": "整合 8 个现有 Skill，保留各自触发条件、权限和验收规则。部分工作流按需依赖 Ponytail、grilling、Karpathy Guidelines、CodeGraph CLI 及 agent-desktop。",
     "developerName": "fanglinwei",
     "category": "Productivity",
     "capabilities": [

@@ -5,7 +5,7 @@
 ## 安装与更新
 
 ```sh
-codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.6
+codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.7
 codex plugin add developer-skills@developer-skills
 ```
 
@@ -13,13 +13,13 @@ codex plugin add developer-skills@developer-skills
 
 ```sh
 codex plugin marketplace remove developer-skills
-codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.6
+codex plugin marketplace add fanglinwei/developer-skills --ref v0.1.7
 codex plugin add developer-skills@developer-skills
 ```
 
 安装后重启 Codex 或开启新聊天，从技能列表选择 `developer-skills` 下的对应 Skill。
 
-当前清单版本：`0.1.6`。版本变化见 [CHANGELOG](CHANGELOG.md)，来源与许可见 [LICENSES](LICENSES.md)。
+当前清单版本：`0.1.7`。版本变化见 [CHANGELOG](CHANGELOG.md)，来源与许可见 [LICENSES](LICENSES.md)。
 
 ## Skill 与用法
 
@@ -31,7 +31,7 @@ codex plugin add developer-skills@developer-skills
 | `frontend-ai-dev-docs` | 按功能梳理前后变化、交互、接口和影响范围，生成或持续维护模块迭代文档。 | `$developer-skills:frontend-ai-dev-docs` 总结订单模块本次功能变动，写入模块功能迭代总结。 |
 | `frontend-page-clone` | 根据示例代码、网页或截图复刻页面或模块，复用项目组件，已有项目优先沿用原接口，缺口按需局部 mock。 | `$developer-skills:frontend-page-clone` 按这张截图复刻指定页面，采用原样复刻档位。 |
 | `frontend-coding-guard` | 隐式触发的精简 Web 安全附加规则，覆盖 HTML/URL、秘密与授权、未知写入及异步恢复；质量细节按需参考。 | `$developer-skills:frontend-coding-guard` 检查这个表单的提交与失败恢复边界。 |
-| `frontend-style-clone` | 对齐局部布局、字体、颜色、控件和动画，保留现有业务数据、文案与交互。 | `$developer-skills:frontend-style-clone` 按参考图调整这个弹窗的外观。 |
+| `frontend-style-clone` | 按场景加载 Web、移动端或桌面端指引，分析和对齐局部布局、字体、控件与动画，保留业务数据、文案和交互。 | `$developer-skills:frontend-style-clone` 按参考应用对齐这个 macOS 设置窗口的外观。 |
 | `swift-code-style` | 在 Swift 编写、重构及审查中应用命名、API、格式、安全解包与引用管理规范。 | `$developer-skills:swift-code-style` 按项目规范调整本次 Swift 改动。 |
 
 调用示例中的页面、模块、参考图和改动范围需替换为实际目标，并提供相关材料。Skill 也可能按任务描述自动触发；需要明确选用时，从技能列表选择或显式输入名称。
@@ -73,17 +73,18 @@ $developer-skills:code-review deep 以 main 为基准审查当前分支。
 
 主审按收益和剩余预算决定分线与复核；累计调用受用户上限、宿主容量及适用的 agent-fit 规则限制。职责与交接见[代理协作协议](skills/code-review/references/agent-collaboration.md)。
 
-## 页面复刻与局部样式调整
+## 页面复刻与界面局部视觉调整
 
 - **完整页面或模块复刻**：使用 `frontend-page-clone`。可选择保留项目组件风格，或尽可能按参考原样复刻；已有项目保留原接口与业务行为，仅对明确缺口使用局部 mock；无接口的纯演示项目默认使用 mock。
-- **现有页面的局部视觉调整**：使用 `frontend-style-clone`。调整指定区域外观，保留正式业务逻辑、数据、绑定和文案。
+- **现有界面的局部视觉分析与调整**：使用 `frontend-style-clone`。保留原调用名，由主技能提供通用复刻能力，Web、移动端、桌面端指引按实际平台和框架适配组件、布局、资源、动画及验收；Web 专项能力从原技能提纯，通用流程不重复保存在平台指引中。调整指定区域外观，保留正式业务逻辑、数据、绑定和文案；只要求分析时交付证据与差异。高保真分析需要桌面屏幕证据时，可按需调用 `agent-desktop`。
 
 ## 按场景使用的依赖
 
-- 代码审查需要 [Ponytail](https://github.com/DietrichGebert/ponytail) 的 `ponytail-review`；界面复刻的实现阶段使用其 `ponytail`。
+- 代码审查需要 [Ponytail](https://github.com/DietrichGebert/ponytail) 的 `ponytail-review`；两项复刻技能的代码实施使用实际加载的 `ponytail` 规则与当前强度，不按平台、复刻档位或子任务另行切档。
 - 复刻存在关键未决选择时，使用 [Matt Pocock Skills](https://github.com/mattpocock/skills) 的 `grilling`。
 - 开发和审查按适用规则使用已安装的 `karpathy-guidelines`。
 - CodeGraph 检索需要对应 CLI；网页分析和视觉验证需要可用且获准使用的浏览器工具。
+- 桌面屏幕取证按需使用已安装的 `agent-desktop` Skill 与 CLI，遵守其后台执行、任务专属会话和光标规则；移动端使用对应平台已有的模拟器或真机工具。缺少运行条件时明确未验证范围。
 
 工具包不会自动安装外部依赖。实际执行遵循用户指令、项目规则及各 Skill 的权限边界；缺少依赖时，说明受影响的步骤和未完成范围。
 

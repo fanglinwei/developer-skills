@@ -94,18 +94,19 @@
       "origin": ".agents/skills/frontend-page-clone",
       "changes": [
         "Prefer existing target-project APIs and business behavior; isolate mocks to missing capabilities or standalone demos, and align the component checklist.",
-        "Consolidate repeated workflow rules while retaining clone tiers, conditional interviewing, component and data reuse, prompt fidelity, and verification requirements."
+        "Consolidate repeated workflow rules while retaining clone tiers, conditional interviewing, component and data reuse, prompt fidelity, and verification requirements.",
+        "Use the actually loaded Ponytail rules and active level instead of a hardcoded subtask-level table; keep visual clone tiers and load matching Web framework guidance on demand."
       ],
       "files": [
         {
           "path": "SKILL.md",
           "source_sha256": "ec39025f540ce4565794d9e7e6f725b643869011e620d5ae4b87879be2514e4e",
-          "packaged_sha256": "467c2a700890a2d814f172a05363a0ce3680784b766be6e4b46a5d299416aa2f"
+          "packaged_sha256": "f5a3fb163e443bea12836e589dbbb53fad65ede6538b4c1479be4c0f503f9b08"
         },
         {
           "path": "references/element-ui-checklist.md",
           "source_sha256": "98cdf09ba8a38b038a353b7c266a03bf5b9834b7fd64f79539d9b5f42057f06b",
-          "packaged_sha256": "285214e07192ad8d681f6b25d8da1385db1ca1be04cc5fc81b58b2685f5aebf7"
+          "packaged_sha256": "fbdfa7ca844c6ee70d428801cbfa20199a172041dd32aacb2667b055c9e2bded"
         }
       ]
     },
@@ -133,12 +134,32 @@
     {
       "name": "frontend-style-clone",
       "origin": ".agents/skills/frontend-style-clone",
-      "changes": [],
+      "changes": [
+        "Provide cross-platform local visual analysis and cloning while retaining the existing skill name and business behavior; remain independent from frontend-page-clone.",
+        "Keep the shared workflow in the main skill; load distilled Web capabilities and native mobile or desktop guidance according to the actual platform and UI framework.",
+        "Use agent-desktop on demand for desktop screen evidence, respecting its session rules and the limits of pixel, layout, accessibility and animation evidence.",
+        "Follow the actually loaded Ponytail rules and active level; retain pending-choice, before-screenshot, matched-trigger and affected failure-path checks."
+      ],
       "files": [
         {
           "path": "SKILL.md",
           "source_sha256": "a1d90eb7cc687f6bbb305cee536da0a24db70e400ad2c33193822ab236fd6fee",
-          "packaged_sha256": "a1d90eb7cc687f6bbb305cee536da0a24db70e400ad2c33193822ab236fd6fee"
+          "packaged_sha256": "edf12d55022551a929d72815880052fc70ad1807a83fa68dad27ff2b0212b832"
+        },
+        {
+          "path": "references/web.md",
+          "source_sha256": null,
+          "packaged_sha256": "e033d56d0097f067d9569caca2fbc4a279a6cee42c45cd972dae329e4b7fc177"
+        },
+        {
+          "path": "references/mobile.md",
+          "source_sha256": null,
+          "packaged_sha256": "5b567c3adc44d3b2ef716d7992f6f815177bc62af5a38ee69b8ff64b277b6996"
+        },
+        {
+          "path": "references/desktop.md",
+          "source_sha256": null,
+          "packaged_sha256": "58aba2cb6361cd3351e56393d0249f4b7596bd2d17d18d2d52c47cb41a8c037b"
         }
       ]
     },
